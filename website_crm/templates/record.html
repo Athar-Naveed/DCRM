@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="heading">
+        <h1>Customer Record: </h1>
+    </div>
+    <div class="record">
+        <span>ID: {{data.id}}</span> <br>
+        <span>First Name: {{data.first_name}}</span> <br>
+        <span>Last Name: {{data.last_name}}</span> <br>
+        <span>Phone : {{data.phone}}</span> <br>
+        <span>Email: {{data.email}}</span> <br>
+        <span>State: {{data.state}}</span> <br>
+        <span>City: {{data.city}}</span> <br>
+        <span>Address: {{data.address}}</span> <br>
+        <span>Zip Code: {{data.zip_code}}</span> <br>
+        <span>Created At: {{data.created_at}}</span> <br>
+        
+    </div>
+    <br>
+    <br>
+    <div>
+        <a class="btn btn-info" href={% url 'home' %}>Back</a>
+        <a class="btn btn-secondary" href={% url 'update_record' data.id %}>Update</a>
+        <a class="btn btn-danger" href={% url 'delete_record' data.id %}>Delete</a>
+    </div>
+</div>
+{% endblock%}

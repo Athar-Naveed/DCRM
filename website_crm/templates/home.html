@@ -2,9 +2,49 @@
 
   {% block content %}
   <main>
-    <div class="col-md-6 offset-md-3">
+    <div>
 {% if user.is_authenticated %}
-<h1>Hello User!</h1>
+{% if records  %}
+
+<div>
+  <div class="heading"><h3>User records here</h3></div>
+  <table class="table table-bordered table-striped">
+    <tbody>
+      {% for record in records %}
+      <tr>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>State</th>
+        <th>City</th>
+        <th>Address</th>
+        <th>Zip Code</th>
+        <th>Created At</th>
+      </tr>
+      <tr>
+        
+          <td><a href={% url 'record' record.id %}>{{record.id}}</a></td>
+          <td> {{record.first_name}} </td>
+        <td>{{record.last_name}} </td>
+        <td>{{record.phone}} </td>
+        <td>{{record.email}} </td>
+        <td>{{record.state}} </td>
+        <td>{{record.city}} </td>
+        <td>{{record.address}} </td>
+        <td>{{record.zip_code}} </td>
+        <td>{{record.created_at}} </td>
+      
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <div class="heading"><span>No records to show</span></div>
+
+{% endif %}
+</div>
 {% else %}
       <h1>Login</h1>
       <br>
